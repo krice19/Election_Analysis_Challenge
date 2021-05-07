@@ -123,5 +123,24 @@ Below is the code I used to determine the winning stats:
             winning_percentage = vote_percentage
 
 ## Challenge Summary
-- change variables into states or city
-- change index to match row the info is in
+
+The script I wrote for this election can be modified for other types of elections.  One example is determining the popular candidate in each city.  To do this, we can add an additional script similar to below:
+
+        if county_name not in county_options:
+
+            county_options.append(county_name)
+
+            county_votes[county_name] = 0
+
+        county_votes[county_name] += 1
+
+    for county_name in county_options:
+
+        county_vote_count = county_votes.get(county_name)
+
+        county_vote_percentage = float(county_vote_count) / float(total_votes) * 100
+        
+       
+ We can add another script along with the one above that takes a unique list of cities and calcuates the vote count and percentage per city.
+ 
+ Going a step further, a second example of modifying the script can be calculating which city within each county had the highest voter turnout.  We can do this creating serperate lists for each county containing their cities.  We would can get this through a script by applying conditionals to an if statement from the resource file.  If the index of the county is equal to that specific county, the city would be added to the list.  We can then loop through each list the same way we did for the county turnout to determine the city with the highest voter turnout. 
